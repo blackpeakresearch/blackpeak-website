@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Research and analysis from BlackPeak Research on AI systems, regulated environments, and institutional technology.">
+    <meta name="theme-color" content="#0A0A0A">
+
+    <title>Research | BlackPeak Research</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://blackpeakresearch.com/research">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://blackpeakresearch.com/research">
+    <meta property="og:title" content="Research | BlackPeak Research">
+    <meta property="og:description"
+        content="Research and analysis on AI systems, regulated environments, and institutional technology.">
+    <meta property="og:image" content="https://blackpeakresearch.com/logos/blackpeak.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="BlackPeak Research">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://blackpeakresearch.com/research">
+    <meta name="twitter:title" content="Research | BlackPeak Research">
+    <meta name="twitter:description"
+        content="Research and analysis on AI systems, regulated environments, and institutional technology.">
+    <meta name="twitter:image" content="https://blackpeakresearch.com/logos/blackpeak.jpg">
+    <meta name="twitter:image:alt" content="BlackPeak Research - AI Systems Engineering">
+
+    <!-- DNS Prefetch & Preconnect -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Font Preload for Performance -->
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap"
+        as="style">
+
+    <!-- Typography Imports -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap"
+        rel="stylesheet">
+
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* --- PAGE HEADER --- */
+        .page-header {
+            padding-top: calc(var(--nav-height) + 80px);
+            padding-bottom: 60px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .page-header-inner {
+            max-width: 800px;
+        }
+
+        /* Note: .section-label is in style.css, but page-specific overrides can go here if needed */
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+
+        .page-intro {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        /* --- RESEARCH LIST --- */
+        .research-list {
+            padding: var(--spacing-section) 0;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        .research-item {
+            display: block;
+            padding: 48px 0;
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .research-item:first-child {
+            padding-top: 0;
+        }
+
+        .research-item:hover {
+            padding-left: 16px;
+        }
+
+        .research-item:hover .research-title {
+            color: var(--accent-orange);
+        }
+
+        .research-meta {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .research-meta span {
+            font-family: var(--font-code);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .meta-dot {
+            width: 3px;
+            height: 3px;
+            background: var(--border-subtle);
+            border-radius: 50%;
+        }
+
+        .research-title {
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+            transition: color 0.2s;
+        }
+
+        .research-excerpt {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            line-height: 1.7;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            font-family: var(--font-code);
+            font-size: 0.85rem;
+            color: var(--accent-orange);
+        }
+
+        .read-more::after {
+            content: '→';
+            transition: transform 0.2s;
+        }
+
+        .research-item:hover .read-more::after {
+            transform: translateX(4px);
+        }
+
+        /* BLINK ANIMATION */
+        .blink,
+        .blink-cursor {
+            animation: blinker 1.2s step-end infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* --- RESPONSIVE / MOBILE --- */
+        @media (max-width: 900px) {
+            .page-title {
+                font-size: 2.25rem;
+            }
+
+            .page-header {
+                padding-top: calc(var(--nav-height) + 60px);
+                padding-bottom: 40px;
+            }
+
+            .research-list {
+                padding: 60px 0;
+            }
+
+            .research-title {
+                font-size: 1.5rem;
+            }
+
+            .research-item {
+                padding: 32px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo" aria-label="BlackPeak Research home">BLACKPEAK | RESEARCH</a>
+            <div class="nav-links">
+                <a href="index.html" class="btn-action" aria-label="Navigate to home">HOME</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+        <div class="container">
+            <div class="page-header-inner">
+                <span class="section-label">Research</span>
+                <h1 class="page-title">Research</h1>
+                <p class="page-intro">Occasional writing on AI adoption, institutional technology, and what we're
+                    learning from the work.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- RESEARCH LIST -->
+    <main class="research-list" role="main">
+        <div class="container">
+            <div class="research-grid">
+
+                <!-- Research Item 3 -->
+                <a href="research-verifiers-dilemma-iii.html" class="research-item">
+                    <div class="research-meta">
+                        <span>January 2026</span>
+                        <span class="meta-dot"></span>
+                        <span>10 min read</span>
+                    </div>
+                    <h2 class="research-title">The Verifier's Dilemma III: The Vigilance Trap</h2>
+                    <p class="research-excerpt">In high-volume systems, Human-in-the-Loop is not a safety control. It is a liability generator. We explore the Vigilance Trap and three structural protocols to fix it.</p>
+                    <span class="read-more">Read</span>
+                </a>
+
+                <!-- Research Item 2 -->
+                <a href="research-verifiers-dilemma-ii.html" class="research-item">
+                    <div class="research-meta">
+                        <span>December 2025</span>
+                        <span class="meta-dot"></span>
+                        <span>6 min read</span>
+                    </div>
+                    <h2 class="research-title">The Verifier’s Dilemma II</h2>
+                    <p class="research-excerpt">For fifty years, the defining constraint of software engineering was the
+                        speed of the typist. That era shifted on a Tuesday morning with the release of GPT-4. We explore
+                        the transition from Creation to Governance.</p>
+                    <span class="read-more">Read</span>
+                </a>
+
+                <!-- Research Item 1 -->
+                <a href="research-verifiers-dilemma.html" class="research-item">
+                    <div class="research-meta">
+                        <span>December 2025</span>
+                        <span class="meta-dot"></span>
+                        <span>8 min read</span>
+                    </div>
+                    <h2 class="research-title">The Verifier's Dilemma</h2>
+                    <p class="research-excerpt">Most conversations about AI start with the wrong question. Executives
+                        ask, "Can AI do this task?" The better question is, "Can we verify that AI did this task
+                        correctly?" A framework for evaluating AI projects based on output verifiability.</p>
+                    <span class="read-more">Read</span>
+                </a>
+
+                <!-- Future items will follow this pattern -->
+                <!--
+                <a href="/research/future-piece" class="research-item">
+                    <div class="research-meta">
+                        <span>Month 2026</span>
+                        <span class="meta-dot"></span>
+                        <span>X min read</span>
+                    </div>
+                    <h2 class="research-title">Future Title</h2>
+                    <p class="research-excerpt">Future excerpt...</p>
+                    <span class="read-more">Read</span>
+                </a>
+                -->
+
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="mailto:hello@blackpeakresearch.com" class="highlight"
+                    aria-label="Email Shaunak Mali">hello@blackpeakresearch.com</a>
+                <span class="mono" style="color: var(--text-muted); display: block; margin-bottom: 8px;">Honolulu, HI |
+                    San Francisco, CA</span>
+                <a href="https://www.linkedin.com/in/shaunakmali/" target="_blank" rel="noopener noreferrer">LinkedIn
+                    Profile ></a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 BlackPeak Research. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script src="js/theme.js"></script>
+
+</body>
+
+</html>

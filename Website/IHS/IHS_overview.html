@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IHS Operational Intelligence | FY2025 Baseline</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Google Fonts: Roboto for Material Design feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Color Palette Comment: 
+         Selected Palette: "Professional & Vibrant"
+         Primary Blue: #1e40af (Blue-800)
+         Vibrant Cyan: #06b6d4 (Cyan-500)
+         Alert Orange: #f97316 (Orange-500)
+         Success Green: #10b981 (Emerald-500)
+         Neutral Grey: #94a3b8 (Slate-400)
+         Background: #f8fafc (Slate-50)
+    -->
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8fafc;
+            /* Slate-50 */
+            color: #1e293b;
+            /* Slate-800 */
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-top: 4px solid #1e40af;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Navigation / Header -->
+    <nav class="bg-blue-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-bold tracking-tight mr-2">IHS</span>
+                        <span
+                            class="text-cyan-400 font-medium tracking-wide border-l-2 border-cyan-400 pl-2">Operational
+                            Intelligence</span>
+                    </div>
+                </div>
+                <div class="flex items-center text-sm opacity-80 hidden md:block">
+                    Status: Pre-Shadowing Baseline | FY2025
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- Introduction -->
+        <section class="mb-10 text-center max-w-4xl mx-auto">
+            <h1 class="text-4xl font-bold text-slate-800 mb-4">The Triage & Specialty Model</h1>
+            <p class="text-lg text-slate-600 leading-relaxed">
+                The FY2025 Operational Baseline reveals a system designed for <strong>two distinct functions</strong>.
+                General shelters operate as high-volume <strong>triage centers</strong> to stabilize and route clients,
+                while <strong>specialized programs</strong> deliver targeted interventions with high success rates. The
+                operational data highlights a deliberate design where "Operational Visibility" extends far beyond
+                federal compliance boundaries.
+            </p>
+        </section>
+
+        <!-- Section 1: The Operational Reach (formerly Hidden Demand) -->
+        <section class="mb-12">
+            <div class="card border-t-orange-500">
+                <div class="md:flex md:justify-between md:items-start mb-6">
+                    <div class="md:w-2/3 pr-4">
+                        <h2 class="text-2xl font-bold text-slate-800 mb-2">Operational Visibility vs. Compliance</h2>
+                        <p class="text-slate-600">
+                            The 56% gap between the Outreach App and HMIS is <strong>intentional operational
+                                design</strong>. The Outreach App captures the full spectrum of street encounters (979
+                            individuals) to ensure operational accuracy and safety. The HMIS pipeline serves as the
+                            "Compliance Layer," capturing only those fully engaged and eligible for federal funding.
+                            This delta represents <strong>visibility, not invisibility</strong>, a rich dataset of
+                            pre-service engagement.
+                        </p>
+                    </div>
+                    <div class="md:w-1/3 mt-4 md:mt-0 bg-orange-50 p-4 rounded-lg border border-orange-200">
+                        <div class="text-center">
+                            <div class="text-sm font-bold text-orange-800 uppercase tracking-wider">Operational Reach
+                            </div>
+                            <div class="text-5xl font-extrabold text-orange-600 my-2">56%</div>
+                            <div class="text-xs text-orange-700">Engagement Beyond Federal Scope</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <!-- Renamed ID for semantic clarity -->
+                    <canvas id="operationalReachChart"></canvas>
+                </div>
+                <p class="mt-4 text-sm text-slate-500 italic text-center">
+                    Data Source: Comparison of unique registrations in Outreach App vs. HMIS (FY2025).
+                </p>
+            </div>
+        </section>
+
+        <!-- Grid Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+
+            <!-- Section 2: Specialization Premium -->
+            <section class="card border-t-emerald-500 h-full">
+                <h2 class="text-2xl font-bold text-slate-800 mb-2">Triage vs. Specialty Outcomes</h2>
+                <p class="text-slate-600 mb-6 h-auto min-h-[80px]">
+                    Lower exit rates in general shelters (Sumner, Kaaahi) reflect their function as <strong>Triage
+                        Centers</strong>. Guests are often transferred laterally to hospitals or specialty
+                    shelters, moves that don't count as "Positive Exits" in federal metrics but are critical
+                    stabilization steps. Once stabilized and moved to specialized tracks (VET, Family), success rates
+                    jump to <strong>81-100%</strong>.
+                </p>
+
+                <div class="chart-container">
+                    <canvas id="specializationChart"></canvas>
+                </div>
+                <div class="mt-4 grid grid-cols-2 gap-4 text-center">
+                    <div class="bg-emerald-50 p-2 rounded">
+                        <span class="block text-xl font-bold text-emerald-700">81-100%</span>
+                        <span class="text-xs text-emerald-800 font-medium">Specialized Track</span>
+                    </div>
+                    <div class="bg-slate-100 p-2 rounded">
+                        <span class="block text-xl font-bold text-slate-600">~37%</span>
+                        <span class="text-xs text-slate-700 font-medium">Triage / Stabilization</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Capacity Paradox -->
+            <section class="card border-t-cyan-500 h-full">
+                <h2 class="text-2xl font-bold text-slate-800 mb-2">Utilization & Ramp-Up</h2>
+                <p class="text-slate-600 mb-6 h-auto min-h-[80px]">
+                    <strong>Kumu Ola Hou</strong> and <strong>AOP</strong> opened mid-year 2025 and faced infrastructure
+                    delays. Kumu Ola Hou has since ramped to <strong>92% occupancy</strong>. The primary question of
+                    "Latent Capacity" now rests with the <strong>VET House</strong> (29.5%). Is the eligibility criteria
+                    for veterans too strict relative to the population need?
+                </p>
+
+                <div class="chart-container">
+                    <canvas id="capacityChart"></canvas>
+                </div>
+                <div class="mt-4 text-center">
+                    <p class="text-sm font-medium text-cyan-800 bg-cyan-50 p-2 rounded inline-block">
+                        <span class="font-bold">Insight:</span> Focus investigation on VET House eligibility criteria.
+                    </p>
+                </div>
+                <p class="mt-2 text-xs text-slate-400 text-center">
+                    *Alana Ola Pono (AOP) opened late FY25; occupancy data pending confirmation.
+                </p>
+            </section>
+        </div>
+
+        <!-- Section 4: Bright Spots -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">Bright Spots: Upstream Interventions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <div class="bg-white rounded-lg shadow p-6 border-l-4 border-blue-600">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-slate-800">Relocation Program Growth</h3>
+                        <div class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">YoY Growth
+                        </div>
+                    </div>
+                    <p class="text-slate-600 mb-4 text-sm">
+                        The "Return to Home" program is the most cost-effective volume reducer, showing accelerating
+                        growth.
+                    </p>
+                    <div class="flex items-end justify-between">
+                        <div>
+                            <span class="text-4xl font-bold text-blue-700">+34%</span>
+                            <span class="text-slate-500 text-sm ml-2">Households Served</span>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-slate-700">152</div>
+                            <div class="text-xs text-slate-500">Individuals Returned (YTD)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow p-6 border-l-4 border-emerald-500">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-slate-800">Prevention Efficiency</h3>
+                        <div class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-0.5 rounded">High
+                            Retention</div>
+                    </div>
+                    <p class="text-slate-600 mb-4 text-sm">
+                        Upstream interventions prevent entry into the shelter system entirely, showing exceptional
+                        retention rates.
+                    </p>
+                    <div class="flex items-end justify-between">
+                        <div>
+                            <span class="text-4xl font-bold text-emerald-600">99.1%</span>
+                            <span class="text-slate-500 text-sm ml-2">Retention Rate</span>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-slate-700">Strong</div>
+                            <div class="text-xs text-slate-500">Evidence for Diversion</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-slate-800 text-white rounded-xl p-8 mt-12">
+            <h3 class="text-xl font-bold mb-4 border-b border-slate-600 pb-2">Shadowing Phase Objectives</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="font-bold text-orange-400 mb-2">1. Engagement Patterns</h4>
+                    <p class="text-sm text-slate-300 opacity-90">
+                        Investigate the "Federal Delta" to understand the characteristics distinguishing
+                        <strong>engaged</strong> vs. <strong>non-engaged</strong> encounters and their conversion
+                        patterns over time.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-cyan-400 mb-2">2. Specialty Handoffs</h4>
+                    <p class="text-sm text-slate-300 opacity-90">
+                        Map the <strong>handoff mechanics</strong> from Triage (General) to Specialty. Identify the
+                        specific success factors that make specialty programs perform so well.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-emerald-400 mb-2">3. Success Profiling</h4>
+                    <p class="text-sm text-slate-300 opacity-90">
+                        Trace data lineage for the 83% successful Re-Entry clients. Identify <strong>predictive
+                            markers</strong> to find similar candidates in the general population.
+                    </p>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-xs text-slate-500">
+                Prepared by BlackPeak Research | Data Source: IHS Baseline Analysis Doc
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- Helper Function for Label Wrapping (16 chars) ---
+        function wrapLabel(label, maxChars) {
+            if (typeof label !== 'string') return label;
+            if (label.length <= maxChars) return label;
+
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                const word = words[i];
+                if ((currentLine + " " + word).length <= maxChars) {
+                    currentLine += " " + word;
+                } else {
+                    lines.push(currentLine);
+                    currentLine = word;
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // --- Common Tooltip Configuration ---
+        const commonTooltipOptions = {
+            callbacks: {
+                title: function (tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        // --- Chart 1: Operational Reach (Horizontal Bar) - RENAMED from Hidden Demand ---
+        const operationalReachCtx = document.getElementById('operationalReachChart').getContext('2d');
+        const operationalReachLabels = ['Total Operational Demand (Outreach App)', 'Federal Compliance Pipeline (HMIS)'];
+        const wrappedReachLabels = operationalReachLabels.map(l => wrapLabel(l, 25));
+
+        new Chart(operationalReachCtx, {
+            type: 'bar',
+            data: {
+                labels: wrappedReachLabels,
+                datasets: [{
+                    label: 'Individuals Registered',
+                    data: [979, 432],
+                    backgroundColor: [
+                        '#1e40af', // Blue-800
+                        '#06b6d4'  // Cyan-500
+                    ],
+                    borderRadius: 6,
+                    barPercentage: 0.6
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: commonTooltipOptions,
+                    title: {
+                        display: true,
+                        text: 'Operational Reach vs. Compliance Pipeline',
+                        font: { size: 16 }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: { color: '#f1f5f9' }
+                    },
+                    y: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // --- Chart 2: Specialization Premium (Bar Chart) ---
+        const specializationCtx = document.getElementById('specializationChart').getContext('2d');
+        const specLabels = [
+            'VET House (Specialized)',
+            'Paepae Hou (Specialized)',
+            'Re-Entry (Specialized)',
+            'Family Shelter (Specialized)',
+            'Sumner Men\'s (Triage)',
+            'Kaaahi Women\'s (Triage)'
+        ];
+        const wrappedSpecLabels = specLabels.map(l => wrapLabel(l, 16));
+
+        new Chart(specializationCtx, {
+            type: 'bar',
+            data: {
+                labels: wrappedSpecLabels,
+                datasets: [{
+                    label: 'Positive Exit Rate (%)',
+                    data: [100, 100, 83.3, 81.3, 38.4, 35.7],
+                    backgroundColor: [
+                        '#10b981', // Emerald (Success)
+                        '#10b981',
+                        '#34d399', // Emerald-400
+                        '#34d399',
+                        '#94a3b8', // Slate-400 (General/Triage)
+                        '#cbd5e1'  // Slate-300
+                    ],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: commonTooltipOptions,
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 110,
+                        grid: { color: '#f1f5f9' },
+                        title: { display: true, text: 'Success Rate (%)' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // --- Chart 3: Capacity Paradox (Bar Chart) ---
+        const capacityCtx = document.getElementById('capacityChart').getContext('2d');
+        const capLabels = [
+            'Housing First',
+            'Kahauiki Village',
+            'Kumu Ola Hou',
+            'Kaaahi (Women)',
+            'VET House',
+            'AOP (Pending*)'
+        ];
+        const wrappedCapLabels = capLabels.map(l => wrapLabel(l, 16));
+
+        new Chart(capacityCtx, {
+            type: 'bar',
+            data: {
+                labels: wrappedCapLabels,
+                datasets: [{
+                    label: 'Bed Utilization (%)',
+                    data: [99.0, 96.4, 92.0, 85.7, 29.5, 0], // AOP is 0 for placeholder
+                    backgroundColor: [
+                        '#f97316', // Orange-500 (Critical/High)
+                        '#fb923c', // Orange-400
+                        '#fb923c', // Orange-400 (Updated High Util)
+                        '#fdba74', // Orange-300
+                        '#06b6d4', // Cyan-500 (Latent Capacity)
+                        '#e2e8f0'  // Slate-200 (Pending Placeholder)
+                    ],
+                    borderRadius: 4,
+                    minBarLength: 5 // Ensure AOP shows as a small blip
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            title: commonTooltipOptions.callbacks.title,
+                            label: function (context) {
+                                if (context.label.includes('Pending')) {
+                                    return 'Occupancy TBD';
+                                }
+                                return context.parsed.y + '% Utilization';
+                            }
+                        }
+                    },
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: { color: '#f1f5f9' },
+                        title: { display: true, text: 'Utilization (%)' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

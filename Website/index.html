@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="A venture studio and operating partner deploying AI systems engineering for public sector, healthcare, and private markets. High-leverage intelligence for regulated assets.">
+    <meta name="theme-color" content="#0A0A0A">
+
+    <title>BlackPeak Research | Venture Studio & Operating Partner</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://blackpeakresearch.com/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://blackpeakresearch.com/">
+    <meta property="og:title" content="BlackPeak Research | AI Systems Engineering">
+    <meta property="og:description"
+        content="AI systems engineering for public sector, healthcare, and critical infrastructure. Silicon Valley rigor tailored for island resilience.">
+    <meta property="og:image" content="https://blackpeakresearch.com/logos/blackpeak.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="BlackPeak Research">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://blackpeakresearch.com/">
+    <meta name="twitter:title" content="BlackPeak Research | AI Systems Engineering">
+    <meta name="twitter:description"
+        content="AI systems engineering for public sector, healthcare, and critical infrastructure. Silicon Valley rigor tailored for island resilience.">
+    <meta name="twitter:image" content="https://blackpeakresearch.com/logos/blackpeak.jpg">
+    <meta name="twitter:image:alt" content="BlackPeak Research - AI Systems Engineering">
+
+    <!-- DNS Prefetch & Preconnect -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Font Preload for Performance -->
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap"
+        as="style">
+
+    <!-- Typography Imports -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap"
+        rel="stylesheet">
+
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border-subtle);
+            background: radial-gradient(circle at 80% 20%, #1a1a1a 0%, var(--bg-void) 60%);
+            padding-top: var(--nav-height);
+        }
+
+        [data-theme="light"] .hero {
+            background: radial-gradient(circle at 80% 20%, #e4e4e7 0%, var(--bg-void) 60%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+
+        .hero-sub {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            font-weight: 300;
+            max-width: 600px;
+        }
+
+        .hero-cta {
+            font-family: var(--font-code);
+            display: inline-block;
+            color: var(--accent-orange);
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+        }
+
+        .hero-cta:hover {
+            border-bottom: 1px solid var(--accent-orange);
+        }
+
+        /* --- DNA STRIP --- */
+        .dna-strip {
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 30px 0;
+            background: var(--bg-void);
+        }
+
+        .dna-label {
+            font-family: var(--font-code);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: block;
+            margin-bottom: 20px;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        .dna-grid {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .dna-logo {
+            height: 32px;
+            width: auto;
+            filter: grayscale(100%) invert(1) brightness(0.6);
+            opacity: 0.4;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .dna-logo {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            filter: none;
+            /* Reset invert if logos are naturally good for white bg, otherwise adjust */
+        }
+
+        /* Assuming logos are suitable for dark mode (light colored) -> invert makes them dark for light mode */
+        /* But wait, most logos in the list looked like PNGs. If they are white text PNGs, invert makes them black. Correct. */
+
+        .dna-logo:hover {
+            filter: grayscale(100%) invert(1) brightness(1);
+            opacity: 0.7;
+            transform: translateY(-2px);
+        }
+
+        [data-theme="light"] .dna-logo:hover {
+            filter: grayscale(0%);
+            /* Show color? Or keep greyscale? Let's check original. */
+            /* Original: filter: grayscale(100%) invert(1) brightness(1); -> White */
+            /* Light mode hover: we want them dark or colored. */
+            filter: none;
+            opacity: 1;
+        }
+
+        /* Mobile tweak */
+        @media (max-width: 600px) {
+            .dna-grid {
+                gap: 24px;
+            }
+
+            .dna-logo {
+                height: 24px;
+            }
+        }
+
+        /* --- THESIS SECTION --- */
+        .thesis {
+            padding: var(--spacing-section) 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .thesis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .thesis-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+
+        .thesis-col p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* --- SECTOR STRIP --- */
+        .sector-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+            padding-top: 60px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .sector-item {
+            padding-left: 16px;
+            border-left: 2px solid var(--accent-orange);
+        }
+
+        .sector-item h4 {
+            font-family: var(--font-code);
+            font-size: 0.85rem;
+            color: var(--text-titanium);
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+        }
+
+        .sector-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* --- ENGAGEMENTS --- */
+        .engagements {
+            padding: var(--spacing-section) 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--bg-basalt);
+            border: 1px solid var(--border-subtle);
+            padding: 32px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 380px;
+        }
+
+        .card:hover {
+            border-color: var(--accent-orange);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.8);
+        }
+
+        [data-theme="light"] .card:hover {
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            margin-bottom: 32px;
+        }
+
+        .card-title {
+            font-family: var(--font-code);
+            color: var(--accent-orange);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .card-sub {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-titanium);
+        }
+
+        .card-body {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+        }
+
+        .card-timeline {
+            font-family: var(--font-code);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .card-outcome {
+            font-size: 0.9rem;
+            color: var(--text-titanium);
+            margin-bottom: 16px;
+            padding-left: 12px;
+            border-left: 2px solid var(--accent-orange);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .tag {
+            font-family: var(--font-code);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            border: 1px solid #333;
+            /* kept literal hex in original, replacing with subtle border var if possible or keeping literal if unique? Original used #333. */
+            padding: 4px 8px;
+        }
+
+        /* Replace hardcoded #333 with var or theme override */
+        .tag {
+            border-color: var(--border-subtle);
+        }
+
+        /* --- METHODOLOGY --- */
+        .methodology {
+            padding: var(--spacing-section) 0;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            background: var(--bg-basalt);
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .method-item h4 {
+            font-family: var(--font-code);
+            color: var(--text-titanium);
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .method-item h4::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-orange);
+        }
+
+        .method-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- PRINCIPAL --- */
+        .principal {
+            padding: var(--spacing-section) 0;
+        }
+
+        .principal-grid {
+            display: block;
+            max-width: 900px;
+        }
+
+        .principal-bio h3 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            font-weight: 400;
+            letter-spacing: -0.04em;
+        }
+
+        .principal-role {
+            font-family: var(--font-code);
+            color: var(--accent-orange);
+            margin-bottom: 40px;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        /* Bio Layout */
+        .bio-block {
+            border-left: 1px solid var(--border-subtle);
+            padding-left: 32px;
+            margin-bottom: 40px;
+        }
+
+        .bio-block h4 {
+            font-family: var(--font-code);
+            color: var(--text-titanium);
+            margin-bottom: 16px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .bio-text {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 800px;
+            margin-bottom: 0;
+            line-height: 1.7;
+        }
+
+        .bio-highlights {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .bio-highlights li {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .bio-highlights li::before {
+            content: '-';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+        }
+
+        .quote {
+            padding-left: 20px;
+            border-left: 2px solid var(--accent-orange);
+            font-style: italic;
+            color: var(--text-titanium);
+            font-family: 'Inter', serif;
+            margin-top: 40px;
+        }
+
+        /* --- RESPONSIVE / MOBILE --- */
+        @media (max-width: 900px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .principal-bio h3 {
+                font-size: 2.5rem;
+            }
+
+            .grid-3,
+            .thesis-grid,
+            .method-grid,
+            .sector-strip {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero {
+                height: auto;
+                padding: 140px 0 80px 0;
+            }
+
+            .bio-block {
+                padding-left: 0;
+                border-left: none;
+            }
+
+            .sector-item {
+                padding-left: 16px;
+                border-left: 2px solid var(--accent-orange);
+            }
+        }
+    </style>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "BlackPeak Research",
+        "url": "https://blackpeakresearch.com",
+        "logo": "https://blackpeakresearch.com/logo.png",
+        "description": "AI systems engineering for public sector, healthcare, and critical infrastructure. Silicon Valley rigor tailored for island resilience.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Honolulu",
+            "addressRegion": "HI",
+            "addressCountry": "US"
+        },
+        "founder": {
+            "@type": "Person",
+            "name": "Shaunak Mali",
+            "jobTitle": "Founder & Principal",
+            "email": "hello@blackpeakresearch.com",
+            "url": "https://www.linkedin.com/in/shaunakmali/",
+            "alumniOf": {
+                "@type": "Organization",
+                "name": "University of Southern California"
+            }
+        },
+        "sameAs": [
+            "https://www.linkedin.com/in/shaunakmali/"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "hello@blackpeakresearch.com",
+            "contactType": "Customer Service"
+        }
+    }
+    </script>
+
+    <!-- 2x2 Capabilities Grid -->
+    <style>
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 768px) {
+            .capabilities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Skip to Main Content for Accessibility -->
+    <a href="#thesis" class="skip-link">Skip to main content</a>
+
+    <!-- NAVIGATION -->
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="container nav-inner">
+            <a href="#" class="logo" aria-label="BlackPeak Research home">BLACKPEAK | RESEARCH</a>
+            <div class="nav-links">
+                <a href="research.html" class="btn-action" aria-label="Navigate to briefings">BRIEFINGS</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="container hero-content">
+            <h1>High-Leverage Intelligence for the Private Markets.</h1>
+            <p class="hero-sub">We are a venture studio and operating partner deploying proprietary data infrastructure. We engineer leverage for <span class="orange-text">private equity</span>, <span class="orange-text">credit facilities</span>, and <span class="orange-text">sovereign institutions</span>.</p>
+            <a href="#capabilities" class="hero-cta">> View Operating Capabilities</a>
+        </div>
+    </header>
+
+    <!-- ENGINEERING DNA STRIP -->
+    <div class="dna-strip">
+        <div class="container">
+            <span class="dna-label">PRINCIPAL OPERATING & ENGINEERING DNA</span>
+            <div class="dna-grid">
+                <img src="logos/pcm.png" alt="Permian Capital Management" class="dna-logo">
+                <img src="logos/Box,_Inc._logo.svg.png" alt="Box" class="dna-logo">
+                <img src="logos/Optimizely.png.webp" alt="Optimizely" class="dna-logo">
+                <img src="logos/checkr_logo_wordmark_aqua3.png" alt="Checkr" class="dna-logo">
+                <img src="logos/6736acb88801c8c464a45754_karma-Logo.svg" alt="KarmaCheck" class="dna-logo">
+            </div>
+        </div>
+    </div>
+
+    <!-- THESIS SECTION -->
+    <main role="main">
+        <section id="thesis" class="thesis">
+            <div class="container">
+                <span class="section-label">01 // The Thesis</span>
+                <div class="thesis-grid">
+                    <div class="thesis-col">
+                        <h3>THE GAP</h3>
+                        <p>Capital is abundant; technical leverage is scarce. Private equity and regulated institutions struggle to modernize legacy assets because standard Silicon Valley playbooks break in high-compliance environments.</p>
+                    </div>
+                    <div class="thesis-col">
+                        <h3>THE BRIDGE</h3>
+                        <p>We operate as a technical holding company. We do not sell hours; we inject <span class="orange-text">sovereign data architectures</span> and <span class="orange-text">deterministic AI layers</span> directly into portfolio assets to compress OpEx and accelerate enterprise value.</p>
+                    </div>
+                </div>
+
+                <!-- Sector Strip -->
+                <div class="sector-strip">
+                    <div class="sector-item">
+                        <h4>PUBLIC SECTOR</h4>
+                        <p>State and county data fabrics requiring audit-ready consolidation and legacy modernization.</p>
+                    </div>
+                    <div class="sector-item">
+                        <h4>HEALTHCARE ECONOMY</h4>
+                        <p>Vertical liquidity and compliance infrastructure for hospitals and staffing networks.</p>
+                    </div>
+                    <div class="sector-item">
+                        <h4>PRIVATE MARKETS</h4>
+                        <p>Mid-market portfolio optimization via shared-services automation and risk modeling.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ENGAGEMENTS -->
+        <section id="capabilities" class="engagements">
+            <div class="container">
+                <span class="section-label">02 // Operating Capabilities</span>
+                <p class="section-intro">We deploy proprietary architectures across three verticals. Our model focuses on long-term asset value rather than fee-for-service work.</p>
+                <div class="capabilities-grid">
+
+<div class="card">
+    <div>
+        <div class="card-header">
+            <span class="card-title">CAPABILITY // SOVEREIGN DATA FABRIC</span>
+            <div class="card-sub">Public Sector & Utilities</div>
+        </div>
+        <p class="card-body">Deploying air-gapped, locally governed retrieval architectures for state agencies and critical utilities. We unify siloed institutional data into audit-ready systems that strictly prevent public model training.</p>
+    </div>
+    <div class="tags">
+        <span class="tag">GovTech</span>
+        <span class="tag">RAG Pipelines</span>
+        <span class="tag">Compliance</span>
+    </div>
+</div>
+
+<div class="card">
+    <div>
+        <div class="card-header">
+            <span class="card-title">CAPABILITY // TECHNICAL OPERATING PARTNER</span>
+            <div class="card-sub">Mid-Market Optimization</div>
+        </div>
+        <p class="card-body">Injecting deterministic AI layers into portfolio companies to automate shared services. We focus on compressing SG&A costs and modernizing legacy tech stacks to drive multiple expansion at exit.</p>
+    </div>
+    <div class="tags">
+        <span class="tag">Rollups</span>
+        <span class="tag">OpEx Compression</span>
+        <span class="tag">EBITDA</span>
+    </div>
+</div>
+
+<div class="card">
+    <div>
+        <div class="card-header">
+            <span class="card-title">VENTURE THESIS // ASSET-BASED LENDING</span>
+            <div class="card-sub">Healthcare Staffing Liquidity</div>
+        </div>
+        <p class="card-body">Designing captive credit facilities that utilize real-time Time & Attendance data to underwrite risk. A proprietary model to provide non-dilutive liquidity to staffing agencies based on verified hours.</p>
+    </div>
+    <div class="tags">
+        <span class="tag">Fintech</span>
+        <span class="tag">Algorithmic Risk</span>
+        <span class="tag">Private Credit</span>
+    </div>
+</div>
+
+<div class="card">
+    <div>
+        <div class="card-header">
+            <span class="card-title">VENTURE THESIS // STRUCTURED FINANCE</span>
+            <div class="card-sub">Private Equity Liquidity</div>
+        </div>
+        <p class="card-body">Architecting tax-efficient liquidity layers for concentrated private equity positions. Developing non-recourse credit frameworks that allow founders to access capital without triggering taxable sales events.</p>
+    </div>
+    <div class="tags">
+        <span class="tag">Derivatives</span>
+        <span class="tag">Tax Structure</span>
+        <span class="tag">QSBS</span>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- METHODOLOGY -->
+        <section class="methodology">
+            <div class="container">
+                <span class="section-label">03 // The Standard</span>
+                <div class="method-grid">
+                    <div class="method-item">
+                        <h4>Sovereign Instances</h4>
+                        <p>Your data never trains public models. We deploy isolated, private instances that ensure data
+                            sovereignty and alignment with strict CJIS, HIPAA, and financial privacy standards.</p>
+                    </div>
+                    <div class="method-item">
+                        <h4>Deterministic Core</h4>
+                        <p>We value auditability over creativity. Our architectures use strict decision trees and
+                            retrieval boundaries to minimize hallucinations, ensuring every output can be traced back to
+                            a specific source of truth.</p>
+                    </div>
+                    <div class="method-item">
+                        <h4>Observable Operations</h4>
+                        <p>We engineer systems for total visibility and instant rollback. No "black box" deployments. We
+                            prioritize human-in-the-loop oversight and iterative integration to protect mission
+                            continuity.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRINCIPAL -->
+        <section id="principal" class="principal">
+            <div class="container">
+                <span class="section-label">04 // Principal</span>
+                <div class="principal-grid">
+
+                    <div class="principal-bio">
+                        <h3>Shaunak Mali</h3>
+                        <span class="principal-role">Founder & Principal</span>
+
+                        <div class="bio-block">
+                            <h4>// Why Here</h4>
+                            <p class="bio-text">I operate at the intersection of systems engineering and capital allocation. After a decade building compliance infrastructure in Silicon Valley (Box, Checkr, KarmaCheck), I founded BlackPeak to bridge the gap between advanced AI architectures and institutional assets.<br><br>
+                                We function not just as architects, but as operating partners, aligning technical incentives with long-term enterprise value.</p>
+                        </div>
+
+                        <div class="bio-block">
+                            <h4>// Receipts</h4>
+                            <ul class="bio-highlights">
+                                <li><strong>Partner, Permian Capital Management.</strong> Served as a key operator for a multi-strategy investment firm, bridging the gap between technical risk modeling and institutional capital allocation.</li>
+                                <li><strong>Co-founded KarmaCheck</strong> with LinkedIn co-founder Eric Ly. Led cross-functional initiatives spanning enterprise strategy, regulated markets, and complex stakeholder environments during the company's growth and scale. Built regulated background verification infrastructure adopted by major healthcare systems and staffing firms nationwide, leading the organization through SOC 2 Type II and PBSA accreditation.</li>
+                                <li><strong>Silicon Valley Systems Architecture.</strong> Early technical roles at Box,
+                                    Optimizely, and Checkr, designing enterprise integrations that passed Fortune 500
+                                    security reviews.</li>
+                                <li>MS Computer Science, University of Southern California. Specialization in Software
+                                    Engineering under pioneer Dr. Barry Boehm (creator of the Spiral Model).</li>
+                                <li>Based in Honolulu.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="mailto:hello@blackpeakresearch.com" class="highlight"
+                    aria-label="Partnership Inquiries">hello@blackpeakresearch.com</a>
+                <span class="mono" style="color: var(--text-muted); display: block; margin-bottom: 8px;">Honolulu, HI |
+                    San Francisco, CA</span>
+                <a href="https://www.linkedin.com/in/shaunakmali/" target="_blank" rel="noopener noreferrer">LinkedIn
+                    Profile ></a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 BlackPeak Research. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script src="js/theme.js"></script>
+</body>
+
+</html>

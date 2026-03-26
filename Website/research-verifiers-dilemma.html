@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="The Verifier's Dilemma: A framework for evaluating AI projects based on output verifiability. By Shaunak Mali, BlackPeak Research.">
+    <meta name="theme-color" content="#0A0A0A">
+
+    <title>The Verifier's Dilemma | BlackPeak Research</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://blackpeakresearch.com/research/verifiers-dilemma">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://blackpeakresearch.com/research/verifiers-dilemma">
+    <meta property="og:title" content="The Verifier's Dilemma | BlackPeak Research">
+    <meta property="og:description"
+        content="A framework for evaluating AI projects based on output verifiability. The question is not 'Can AI do this task?' but 'Can we verify that AI did this task correctly?'">
+    <meta property="og:image" content="https://blackpeakresearch.com/logos/blackpeak.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="BlackPeak Research">
+    <meta property="article:published_time" content="2025-12-01">
+    <meta property="article:author" content="Shaunak Mali">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://blackpeakresearch.com/research/verifiers-dilemma">
+    <meta name="twitter:title" content="The Verifier's Dilemma | BlackPeak Research">
+    <meta name="twitter:description" content="A framework for evaluating AI projects based on output verifiability.">
+    <meta name="twitter:image" content="https://blackpeakresearch.com/logos/blackpeak.jpg">
+    <meta name="twitter:image:alt" content="BlackPeak Research - AI Systems Engineering">
+
+    <!-- DNS Prefetch & Preconnect -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Font Preload for Performance -->
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap"
+        as="style">
+
+    <!-- Typography Imports -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap"
+        rel="stylesheet">
+
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* --- ARTICLE HEADER --- */
+        .article-header {
+            padding-top: calc(var(--nav-height) + 80px);
+            padding-bottom: 60px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .article-header-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .article-label {
+            font-family: var(--font-code);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .article-title {
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .article-meta span {
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .meta-divider {
+            width: 4px;
+            height: 4px;
+            background: var(--border-subtle);
+            border-radius: 50%;
+        }
+
+        /* --- ARTICLE BODY --- */
+        .article-body {
+            padding: 80px 0;
+        }
+
+        .article-content {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .article-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-titanium);
+            margin-bottom: 28px;
+        }
+
+        .article-content p.lede {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        .article-content h2 {
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-top: 64px;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .article-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 48px;
+            margin-bottom: 16px;
+        }
+
+        .article-content strong {
+            color: var(--text-titanium);
+            font-weight: 600;
+        }
+
+        .article-content em {
+            font-style: italic;
+        }
+
+        .article-content blockquote {
+            border-left: 2px solid var(--accent-orange);
+            padding-left: 24px;
+            margin: 40px 0;
+            font-style: italic;
+            color: var(--text-titanium);
+        }
+
+        .article-content blockquote p {
+            margin-bottom: 0;
+        }
+
+        .article-content ul,
+        .article-content ol {
+            margin: 24px 0;
+            padding-left: 24px;
+        }
+
+        .article-content li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-titanium);
+            margin-bottom: 12px;
+            list-style: disc;
+        }
+
+        .article-content ol li {
+            list-style: decimal;
+        }
+
+        .callout {
+            background: var(--bg-basalt);
+            border: 1px solid var(--border-subtle);
+            border-left: 3px solid var(--accent-orange);
+            padding: 24px 28px;
+            margin: 40px 0;
+        }
+
+        .callout p {
+            margin-bottom: 0;
+            font-size: 1.05rem;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 64px 0;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            letter-spacing: 0.5em;
+        }
+
+        /* --- AUTHOR BIO --- */
+        .author-bio {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 40px;
+            margin-top: 80px;
+        }
+
+        .author-bio p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        /* BLINK ANIMATION */
+        .blink,
+        .blink-cursor {
+            animation: blinker 1.2s step-end infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* --- RESPONSIVE / MOBILE --- */
+        @media (max-width: 900px) {
+            .article-title {
+                font-size: 2.25rem;
+            }
+
+            .article-header {
+                padding-top: calc(var(--nav-height) + 60px);
+                padding-bottom: 40px;
+            }
+
+            .article-body {
+                padding: 60px 0;
+            }
+
+            .article-content p {
+                font-size: 1rem;
+            }
+
+            .article-content h2 {
+                font-size: 1.5rem;
+                margin-top: 48px;
+            }
+        }
+    </style>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "The Verifier's Dilemma",
+        "description": "A framework for evaluating AI projects based on output verifiability.",
+        "author": {
+            "@type": "Person",
+            "name": "Shaunak Mali",
+            "jobTitle": "Founder & Principal",
+            "url": "https://www.linkedin.com/in/shaunakmali/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "BlackPeak Research",
+            "url": "https://blackpeakresearch.com"
+        },
+        "datePublished": "2025-12-01",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://blackpeakresearch.com/research/verifiers-dilemma"
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo" aria-label="BlackPeak Research home">BLACKPEAK | RESEARCH</a>
+            <div class="nav-links">
+                <a href="research.html" class="btn-action" aria-label="Back to briefings">BRIEFINGS</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ARTICLE HEADER -->
+    <header class="article-header">
+        <div class="container">
+            <div class="article-header-inner">
+                <span class="article-label">Research // December 2025</span>
+                <h1 class="article-title">The Verifier's Dilemma</h1>
+                <div class="article-meta">
+                    <span>Shaunak Mali</span>
+                    <span class="meta-divider"></span>
+                    <span>8 min read</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ARTICLE BODY -->
+    <main class="article-body" role="main">
+        <div class="container">
+            <article class="article-content">
+
+                <p class="lede">Intelligence is being commoditized. This is no longer speculation. The cost of achieving
+                    a given level of AI performance on standard benchmarks has dropped by orders of magnitude in two
+                    years. What cost thousands of dollars in compute recently now costs pennies. The trend shows no
+                    signs of stopping.</p>
+
+                <p>Most conversations about AI start with the wrong question. Executives ask, "Can AI do this task?" The
+                    better question, the one that actually predicts success or failure, is: "Can we verify that AI did
+                    this task correctly?"</p>
+
+                <p>That distinction matters more than most people realize.</p>
+
+                <div class="divider">· · ·</div>
+
+                <h2>The Commoditization of Intelligence</h2>
+
+                <p>Think about what the Industrial Revolution did to physical strength. Before mechanization, the
+                    strongest person in the village had real economic advantage. After? Strength became table stakes.
+                    Anyone could rent a tractor.</p>
+
+                <p>We are watching the same thing happen to certain types of cognitive work. The ability to synthesize
+                    information, draft documents, analyze data, write code . . . these are becoming commodities. Not
+                    worthless, but no longer scarce.</p>
+
+                <p>The implications are significant, but they are also uneven. Not all tasks are affected equally. Which
+                    brings me to what I have started calling the "jagged edge."</p>
+
+                <h2>The Jagged Edge</h2>
+
+                <p>AI capability is not a smooth surface. It is jagged.</p>
+
+                <p>The models are remarkably good at some things and surprisingly bad at others. They excel at
+                    competition math and certain types of coding. They struggle with tasks that seem trivial. For years,
+                    models would confidently assert that 9.11 is less than 9.9.</p>
+
+                <p>More importantly, different tasks improve at different rates. Competition math went from impossible
+                    to essentially solved in about 18 months. Translation between major languages? Solved. But
+                    translation to Tlingit (a language spoken by a few hundred Native Americans)? Still poor, and likely
+                    to remain so.</p>
+
+                <p>The pattern is predictable if you know what to look for.</p>
+
+                <p><strong>AI improves fastest</strong> when the task is digital (not physical), data is abundant, and
+                    the task is similar to things humans find tractable.</p>
+
+                <p><strong>AI improves slowly</strong> when the task requires physical manipulation, data is scarce or
+                    proprietary, or the task involves edge cases with limited examples.</p>
+
+                <p>This means there will not be a single moment when "AI takes over." Instead, we will see a gradual,
+                    uneven transformation. Software development will be heavily augmented within a few years.
+                    Hairdressing and plumbing? Probably not in our lifetimes. The economic returns to skilled trades may
+                    actually increase relative to knowledge work. This would represent an inversion of the pattern we
+                    have seen for decades.</p>
+
+                <p>The practical question for any institution is: where do your critical tasks sit on this jagged edge?
+                </p>
+
+                <h2>Verifier's Law</h2>
+
+                <p>Here is the framework I find most useful for evaluating AI projects.</p>
+
+                <p>There is an old idea in computer science called asymmetry of verification: for some tasks, it is much
+                    easier to verify a solution than to find one. Sudoku is the classic example. Solving it is hard;
+                    checking if a solution is correct takes seconds.</p>
+
+                <p>I have started calling this principle "Verifier's Law" when applied to AI adoption:</p>
+
+                <div class="callout">
+                    <p><strong>The ability to successfully deploy AI on a task is proportional to how easily you can
+                            verify the output.</strong></p>
+                </div>
+
+                <p>This sounds simple, but the implications are profound.</p>
+
+                <p>Consider a simple matrix. On one axis: how easy is it for AI to perform the task? On the other: how
+                    easy is it for a human to verify the result?</p>
+
+                <p><strong>The best projects</strong> sit where AI performs well AND humans can verify easily. Examples
+                    include code generation (does it compile? do the tests pass?), document drafting (can a human review
+                    it quickly?), and form completion (did the system accept it or reject it?).</p>
+
+                <p><strong>The dangerous projects</strong> sit where AI performs well BUT verification is expensive or
+                    impossible. This is where institutions get hurt. Examples include insurance claims adjudication at
+                    scale, medical diagnosis without physician review, and legal document analysis with no human
+                    checkpoint.</p>
+
+                <p>I was recently in a conversation where someone mentioned a lawsuit against a major insurer for
+                    AI-driven claim denials. The AI could process claims at massive scale (easy for AI). But verifying
+                    each decision? Expensive, slow, and often skipped. The company could afford the lawsuit. Most
+                    institutions cannot.</p>
+
+                <h2>Practical Application</h2>
+
+                <p>So how do you use this framework?</p>
+
+                <p><strong>First, map your candidate AI projects on both dimensions.</strong> For each potential use
+                    case, ask: Where does this sit on the jagged edge? Is AI currently good at this, or are we hoping it
+                    will get good? How easily can we verify the output? Is there an objective check, or does
+                    verification require as much effort as doing the task manually?</p>
+
+                <p><strong>Second, start where verification is cheap.</strong> The boring projects are often the best
+                    ones. Form auto-completion. Document summarization with human review. Code suggestions that
+                    developers can accept or reject. These will not make headlines, but they will actually work.</p>
+
+                <p><strong>Third, be honest about verification costs.</strong> If you are considering a project where AI
+                    can easily perform the task but verification is expensive, slow, or subjective . . . proceed with
+                    extreme caution. This is where the lawsuits come from. This is where trust erodes.</p>
+
+                <p><strong>Fourth, build verification infrastructure before you need it.</strong> One insight that has
+                    emerged from recent conversations with healthcare CIOs and state technology officers: you can
+                    sometimes move a task from "hard to verify" to "easy to verify" by investing in verification
+                    infrastructure upfront.</p>
+
+                <p>Code is easier to verify if you have comprehensive test suites. Claims processing is easier to verify
+                    if you have clear decision trees and audit trails. Form completion is easy to verify because
+                    rejection is immediate feedback.</p>
+
+                <p>The institutions that will do best with AI are those that invest in verifiability before they deploy
+                    AI at scale.</p>
+
+                <h2>A Note on Synthetic Data</h2>
+
+                <p>One more tactical point. If you are exploring AI in a regulated environment, consider what I call the
+                    "special projects" approach: use synthetic data to test and iterate before touching production
+                    systems.</p>
+
+                <p>This does two things. First, it removes the compliance and privacy concerns that slow down
+                    experimentation. Second, it gives you a safe environment to discover where AI actually sits on the
+                    jagged edge for your specific use cases. You learn this before you have committed resources or made
+                    promises to stakeholders.</p>
+
+                <p>The goal is to fail cheaply, in a sandbox, rather than expensively, in production.</p>
+
+                <h2>What This Means</h2>
+
+                <p>I do not think AI will replace most knowledge workers in the next few years. I also do not think it
+                    is a passing fad that can be safely ignored.</p>
+
+                <p>What I do think is that institutions which adopt a disciplined framework (understanding the jagged
+                    edge, respecting Verifier's Law, investing in verification infrastructure) will navigate this
+                    transition better than those chasing headlines or paralyzed by uncertainty.</p>
+
+                <p>The question is not "Should we do AI?" The question is "Which AI projects can we verify, and
+                    therefore trust?"</p>
+
+                <p>Start there.</p>
+
+                <!-- AUTHOR BIO -->
+                <div class="author-bio">
+                    <p>Shaunak Mali is the founder of BlackPeak Research. His work focuses on the intersection of systems design, verification, and risk in complex and regulated environments. He previously co-founded KarmaCheck and has worked across software, infrastructure, and enterprise systems.</p>
+                </div>
+
+            </article>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="mailto:hello@blackpeakresearch.com" class="highlight"
+                    aria-label="Email Shaunak Mali">hello@blackpeakresearch.com</a>
+                <span class="mono" style="color: var(--text-muted); display: block; margin-bottom: 8px;">Honolulu, HI |
+                    San Francisco, CA</span>
+                <a href="https://www.linkedin.com/in/shaunakmali/" target="_blank" rel="noopener noreferrer">LinkedIn
+                    Profile ></a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 BlackPeak Research. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script src="js/theme.js"></script>
+
+</body>
+
+</html>
